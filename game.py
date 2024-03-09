@@ -67,7 +67,7 @@ for i in range(len(players)):
 
 print("Let's play!")
 
-for t in range(13):
+for t in range(1):
     print("Round " + str(t+1) + " / 13") 
     for player in players:
         print(player.name + ", it's your turn!")
@@ -81,8 +81,8 @@ for t in range(13):
     
 
 print("Game over!")
-player.sort(key=lambda x: x.score, reverse=False)
-print(Colors.BOLD + "The winner is: " + players[0].name + "!!" + Colors.ENDC)
+players.sort(key=lambda x: x.score, reverse=False)
+print(Colors.BOLD + "The winner is... " + players[0].name + "!!" + Colors.ENDC)
 
 for p in range(len(players)):
     print(str(p + 1) + ". " + players[p].name + ", your final score is: " + str(players[p].score))
