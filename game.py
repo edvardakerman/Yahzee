@@ -67,8 +67,8 @@ for i in range(len(players)):
 
 print("Let's play!")
 
-for t in range(1):
-    print("Round " + str(t+1) + " / 13") 
+for t in range(15):
+    print("Round " + str(t+1) + " / 15") 
     for player in players:
         print(player.name + ", it's your turn!")
         player.showSS()

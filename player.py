@@ -6,6 +6,8 @@ from ScoreSheet.full_house import Full_house
 from ScoreSheet.straight import Straight
 from ScoreSheet.three_of_a_kind import Three_of_a_kind
 from ScoreSheet.yahzee import Yahzee
+from ScoreSheet.pair import Pair
+from ScoreSheet.two_pairs import Two_pair
 from colors import Colors
 
 class Player:
@@ -20,15 +22,17 @@ class Player:
         self.fours = Basic(4, "Fours", color)
         self.fives = Basic(5, "Fives", color)
         self.sixes = Basic(6, "Sixes", color)
-        self.three_of_a_kind = Three_of_a_kind(7, "Three of a kind", color)
-        self.four_of_a_kind = Four_of_a_kind(8, "Four of a kind", color)
-        self.full_house = Full_house(9, "Full house", color)
-        self.sm_straight = Straight(10, "Small straight", color)
-        self.lg_straight = Straight(11, "Large straight", color)
-        self.yahzee = Yahzee(12, "Yahzee", color)
-        self.chance = Chance(13, "Chance", color)
-        self.bonus = Bonus(14, "Bonus", color)
-        self.base = [self.ones, self.twos, self.threes, self.fours, self.fives, self.sixes, self.three_of_a_kind, self.four_of_a_kind, self.full_house, self.sm_straight, self.lg_straight, self.yahzee, self.chance]
+        self.pair = Pair(7, "Pair", color)
+        self.two_pair = Two_pair(8, "Two pairs", color)
+        self.three_of_a_kind = Three_of_a_kind(9, "Three of a kind", color)
+        self.four_of_a_kind = Four_of_a_kind(10, "Four of a kind", color)
+        self.full_house = Full_house(11, "Full house", color)
+        self.sm_straight = Straight(12, "Small straight", color)
+        self.lg_straight = Straight(13, "Large straight", color)
+        self.yahzee = Yahzee(14, "Yahzee", color)
+        self.chance = Chance(15, "Chance", color)
+        self.bonus = Bonus(16, "Bonus", color)
+        self.base = [self.ones, self.twos, self.threes, self.fours, self.fives, self.sixes, self.pair, self.two_pair, self.three_of_a_kind, self.four_of_a_kind, self.full_house, self.sm_straight, self.lg_straight, self.yahzee, self.chance]
     
     def setName(self, name):
         self.name = name
