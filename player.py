@@ -13,9 +13,6 @@ class Player:
 
     def __init__(self, name):
         self.name = name
-    
-    def setName(self, name):
-        self.name = name
         self.ones = Basic(1, "Ones           ")
         self.twos = Basic(2, "Twos           ")
         self.threes = Basic(3, "Threes         ")
@@ -31,6 +28,10 @@ class Player:
         self.chance = Chance()
         self.bonus = Bonus()
         self.base = [self.ones, self.twos, self.threes, self.fours, self.fives, self.sixes, self.three_of_a_kind, self.four_of_a_kind, self.full_house, self.sm_straight, self.lg_straight, self.yahzee, self.chance]
+    
+    def setName(self, name):
+        self.name = name
+
 
     def takeScore(self, type, dice):
         for i in self.base:
@@ -38,8 +39,9 @@ class Player:
                 i.taken = True
                 i.calcScore(dice)
                 self.score += i.score
-                self.bonus.calcScore(self.base)
-                self.score += self.bonus.score
+                if i.type in range(1, 7) and self.bonus.taken == False:
+                    self.bonus.calcBonus(i.score)
+                    self.score += self.bonus.score
                 return True
         return False
 

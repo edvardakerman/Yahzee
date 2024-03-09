@@ -76,7 +76,7 @@ while turns < 13:
             player_Choice(dice, n)
         score_Choice(player)
         player.showSS()
-        turns += 1
+    turns += 1
     
 
 print("Game over!")
