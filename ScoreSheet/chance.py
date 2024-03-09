@@ -1,8 +1,6 @@
-class Chance:
-    score = 0
-    taken = False
-    type = 13
-    name = "Chance        "
+from ScoreSheet.basic import Basic
+
+class Chance(Basic):
 
     def sumAll(self, dice):
         sum = 0
@@ -12,3 +10,4 @@ class Chance:
 
     def calcScore(self, dice):
         self.score = self.sumAll(dice)
+        self.statusColor()

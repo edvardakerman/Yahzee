@@ -13,20 +13,20 @@ class Player:
 
     def __init__(self, name):
         self.name = name
-        self.ones = Basic(1, "Ones           ")
-        self.twos = Basic(2, "Twos           ")
-        self.threes = Basic(3, "Threes         ")
-        self.fours = Basic(4, "Fours          ")
-        self.fives = Basic(5, "Fives          ")
-        self.sixes = Basic(6, "Sixes          ")
-        self.three_of_a_kind = Three_of_a_kind()
-        self.four_of_a_kind = Four_of_a_kind()
-        self.yahzee = Yahzee()
-        self.full_house = Full_house()
+        self.ones = Basic(1, "Ones")
+        self.twos = Basic(2, "Twos")
+        self.threes = Basic(3, "Threes")
+        self.fours = Basic(4, "Fours")
+        self.fives = Basic(5, "Fives")
+        self.sixes = Basic(6, "Sixes")
+        self.three_of_a_kind = Three_of_a_kind(7, "Three of a kind")
+        self.four_of_a_kind = Four_of_a_kind(8, "Four of a kind")
+        self.full_house = Full_house(9, "Full house")
         self.sm_straight = Straight(10, "Small straight")
         self.lg_straight = Straight(11, "Large straight")
-        self.chance = Chance()
-        self.bonus = Bonus()
+        self.yahzee = Yahzee(12, "Yahzee")
+        self.chance = Chance(13, "Chance")
+        self.bonus = Bonus(14, "Bonus")
         self.base = [self.ones, self.twos, self.threes, self.fours, self.fives, self.sixes, self.three_of_a_kind, self.four_of_a_kind, self.full_house, self.sm_straight, self.lg_straight, self.yahzee, self.chance]
     
     def setName(self, name):
@@ -47,17 +47,9 @@ class Player:
 
     def showSS(self):
         print("Score sheet for " + self.name + ":")
-        print("---------------------------")
-        count = 0
+        print("-----------------------------")
         for i in self.base:
-            count += 1
-            if i.taken:
-                print(Colors.OKGREEN + "| " + str(i.type) + " | " + i.name  + " | " + str(i.score) + " |" + Colors.ENDC)
-                print("---------------------------")
-            else:
-                print(Colors.OKBLUE + "| " + str(i.type) + " | " + i.name  + " | X |" + Colors.ENDC)
-                print("---------------------------")
+            i.print()
         Bonus.print(self.bonus)
-        print("---------------------------")
         print(Colors.BOLD + "| Total: " + str(self.score) + Colors.ENDC)
-        print("---------------------------")
+        print("-----------------------------") 

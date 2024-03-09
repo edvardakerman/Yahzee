@@ -1,8 +1,6 @@
-class Full_house:
-    score = 0
-    taken = False
-    type = 9
-    name = "Full house     "
+from ScoreSheet.basic import Basic
+
+class Full_house(Basic):
 
     def sumAll(self, dice):
         sum = 0
@@ -17,3 +15,4 @@ class Full_house:
             self.score = self.sumAll(dice)
         elif dice[0].value == dice[1].value and dice[2].value == dice[4].value:
             self.score = self.sumAll(dice)
+        self.statusColor()
