@@ -3,12 +3,12 @@ from colors import Colors
 class Basic:
     printNrChar = 15
 
-    def __init__(self, type, name):
+    def __init__(self, type, name, color):
         self.type = type
         self.name = name
         self.score = 0
         self.taken = False
-        self.status = Colors.OKBLUE
+        self.status = color
     
     def getSpace(self):
         return " " * (Basic.printNrChar - len(self.name))
@@ -22,9 +22,9 @@ class Basic:
     def statusColor(self):
         if self.taken == True:
             if self.score == 0:
-                self.status = Colors.FAIL
+                self.status = Colors.RED
             else:
-                self.status = Colors.OKGREEN
+                self.status = Colors.GREEN
 
     def calcScore(self, dice):
         self.taken = True

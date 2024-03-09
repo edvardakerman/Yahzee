@@ -9,24 +9,25 @@ from ScoreSheet.yahzee import Yahzee
 from colors import Colors
 
 class Player:
-    score = 0
 
-    def __init__(self, name):
+    def __init__(self, name, color):
+        self.score = 0
         self.name = name
-        self.ones = Basic(1, "Ones")
-        self.twos = Basic(2, "Twos")
-        self.threes = Basic(3, "Threes")
-        self.fours = Basic(4, "Fours")
-        self.fives = Basic(5, "Fives")
-        self.sixes = Basic(6, "Sixes")
-        self.three_of_a_kind = Three_of_a_kind(7, "Three of a kind")
-        self.four_of_a_kind = Four_of_a_kind(8, "Four of a kind")
-        self.full_house = Full_house(9, "Full house")
-        self.sm_straight = Straight(10, "Small straight")
-        self.lg_straight = Straight(11, "Large straight")
-        self.yahzee = Yahzee(12, "Yahzee")
-        self.chance = Chance(13, "Chance")
-        self.bonus = Bonus(14, "Bonus")
+        self.color = color
+        self.ones = Basic(1, "Ones", color)
+        self.twos = Basic(2, "Twos", color)
+        self.threes = Basic(3, "Threes", color)
+        self.fours = Basic(4, "Fours", color)
+        self.fives = Basic(5, "Fives", color)
+        self.sixes = Basic(6, "Sixes", color)
+        self.three_of_a_kind = Three_of_a_kind(7, "Three of a kind", color)
+        self.four_of_a_kind = Four_of_a_kind(8, "Four of a kind", color)
+        self.full_house = Full_house(9, "Full house", color)
+        self.sm_straight = Straight(10, "Small straight", color)
+        self.lg_straight = Straight(11, "Large straight", color)
+        self.yahzee = Yahzee(12, "Yahzee", color)
+        self.chance = Chance(13, "Chance", color)
+        self.bonus = Bonus(14, "Bonus", color)
         self.base = [self.ones, self.twos, self.threes, self.fours, self.fives, self.sixes, self.three_of_a_kind, self.four_of_a_kind, self.full_house, self.sm_straight, self.lg_straight, self.yahzee, self.chance]
     
     def setName(self, name):

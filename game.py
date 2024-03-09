@@ -1,3 +1,4 @@
+from colors import Colors
 from dice import Dice
 from player import Player
 
@@ -10,10 +11,10 @@ dice5 = Dice()
 dice = [dice1, dice2, dice3, dice4, dice5]
 
 ## Players
-playerOne = Player("one")
-playerTwo = Player("two")
-playerThree = Player("three")
-playerFour = Player("four")
+playerOne = Player("one", Colors.CYAN)
+playerTwo = Player("two", Colors.PINK)
+playerThree = Player("three", Colors.YELLOW)
+playerFour = Player("four", Colors.BLUE)
 players = [playerOne, playerTwo, playerThree, playerFour]
 
 ## Turns
@@ -66,7 +67,8 @@ for i in range(len(players)):
 
 print("Let's play!")
 
-while turns < 13:
+for t in range(13):
+    print("Round " + str(t+1) + " / 13") 
     for player in players:
         print(player.name + ", it's your turn!")
         player.showSS()
@@ -76,10 +78,12 @@ while turns < 13:
             player_Choice(dice, n)
         score_Choice(player)
         player.showSS()
-    turns += 1
     
 
 print("Game over!")
-for player in players:
-    print(player.name + ", your final score is: " + str(player.score))
+player.sort(key=lambda x: x.score, reverse=False)
+print(Colors.BOLD + "The winner is: " + players[0].name + "!!" + Colors.ENDC)
+
+for p in range(len(players)):
+    print(str(p + 1) + ". " + players[p].name + ", your final score is: " + str(players[p].score))
 
