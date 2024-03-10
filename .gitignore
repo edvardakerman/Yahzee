@@ -151,4 +151,7 @@ Testing/
 #   static type checking features.
 .pylance.*
 
+## Highscore
+highscore.txt
+
 # End of generated files
