@@ -1,3 +1,4 @@
+from highScore import HighScore
 from inputHandling import InputHandling
 from colors import Colors
 from dice import Dice
@@ -43,12 +44,12 @@ def player_Choice(dice, throw):
         for k in dice:
             k.save(False)
         if throw <= 1:
-            print("Which dice do you want to keep?")
+            print("\nWhich dice do you want to keep?")
             saved_dice = InputHandling.getSavedDice()
             keep_dice(saved_dice)
         
 def score_Choice(player):
-    print("Please choose from you score sheet (1-15)")
+    print("\nPlease choose from you score sheet (1-15)")
     scoreChoice = InputHandling.getInt(1, 15)
     while not player.takeScore(scoreChoice, dice):
         print("Invalid choice. Please choose a valid number that has not been taken from your Score Sheet.")
@@ -57,34 +58,39 @@ def score_Choice(player):
         i.save(False)
 
 ## Game
-print("Welcome to Yahtzee!")
-print("How many players are there? (1-4)")
+print(Colors.HEADER + "\nWelcome to Yahtzee!" + " Try to set a new highscore!!" + Colors.ENDC)
+if (HighScore.getHighScore() > 0):
+    print("The current highscore is " + str(HighScore.getHighScore()))
+print("\nHow many players are there? (1-4)")
 numPlayers = InputHandling.getInt(1, 4)
 players = players[:numPlayers]
 for i in range(len(players)):
-    print("Enter player " + str(i + 1) + "'s name:")
+    print("\nEnter player " + str(i + 1) + "'s name:")
     name = str(input())
     players[i].setName(name)
 
-print("Let's play!")
+print("\nLet's play!")
 
 for t in range(15):
-    print("Round " + str(t+1) + " / 15") 
+    print("\nRound " + str(t+1) + " / 15")
     for player in players:
-        print(player.name + ", it's your turn!")
+        print('\n' + player.name + ", it's your turn!")
         player.showSS()
         for n in range(3):
-            print("Throw " + str(n+1))
+            print("\nThrow " + str(n+1))
             roll_dice(dice)
             player_Choice(dice, n)
         score_Choice(player)
         player.showSS()
     
 
-print("Game over!")
+print("\nGame over!")
 players.sort(key=lambda x: x.score, reverse=False)
-print(Colors.BOLD + "The winner is... " + players[0].name + "!!" + Colors.ENDC)
+print(Colors.BOLD + "The winner is... " + players[0].name + "!!\n" + Colors.ENDC)
+HighScore.saveHighScore(players[0].score)
 
 for p in range(len(players)):
     print(str(p + 1) + ". " + players[p].name + ", your final score is: " + str(players[p].score))
+print("\nHighscore: " + str(HighScore.getHighScore()))
+
 

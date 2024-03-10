@@ -1,3 +1,4 @@
+
 class InputHandling:
     
     def getInt(min, max):
@@ -24,5 +25,5 @@ class InputHandling:
                     print("Invalid input. Please enter only valid number(s).")
             if len(num) == len(dice):
                 return num
-    
-    
+
+        
