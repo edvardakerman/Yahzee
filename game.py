@@ -1,3 +1,4 @@
+from inputHandling import InputHandling
 from colors import Colors
 from dice import Dice
 from player import Player
@@ -43,22 +44,22 @@ def player_Choice(dice, throw):
             k.save(False)
         if throw <= 1:
             print("Which dice do you want to keep?")
-            saved_dice = [int(i) for i in str(input())]
+            saved_dice = InputHandling.getSavedDice()
             keep_dice(saved_dice)
         
 def score_Choice(player):
-    print("Please choose from you score sheet (1-13)")
-    scoreChoice = int(input())
+    print("Please choose from you score sheet (1-15)")
+    scoreChoice = InputHandling.getInt(1, 15)
     while not player.takeScore(scoreChoice, dice):
-        print("Invalid choice. Please choose a valid number that has not been taken.")
-        scoreChoice = int(input())
+        print("Invalid choice. Please choose a valid number that has not been taken from your Score Sheet.")
+        scoreChoice = InputHandling.getInt(1, 15)
     for i in dice:
         i.save(False)
 
 ## Game
 print("Welcome to Yahtzee!")
 print("How many players are there? (1-4)")
-numPlayers = int(input())
+numPlayers = InputHandling.getInt(1, 4)
 players = players[:numPlayers]
 for i in range(len(players)):
     print("Enter player " + str(i + 1) + "'s name:")
