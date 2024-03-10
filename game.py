@@ -66,7 +66,7 @@ numPlayers = InputHandling.getInt(1, 4)
 players = players[:numPlayers]
 for i in range(len(players)):
     print("\nEnter player " + str(i + 1) + "'s name:")
-    name = str(input())
+    name = InputHandling.getString()
     players[i].setName(name)
 
 print("\nLet's play!")
