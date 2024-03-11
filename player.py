@@ -29,13 +29,13 @@ class Player:
         self.yahzee = Of_a_kind(14, "YAHZEE", color, 5)
         self.chance = Chance(15, "Chance", color)
         self.bonus = Bonus(16, "Bonus", color)
-        self.base = [self.ones, self.twos, self.threes, self.fours, self.fives, self.sixes, self.pair, self.two_pair, self.three_of_a_kind, self.four_of_a_kind, self.full_house, self.sm_straight, self.lg_straight, self.yahzee, self.chance]
+        self.scoreSheet = [self.ones, self.twos, self.threes, self.fours, self.fives, self.sixes, self.pair, self.two_pair, self.three_of_a_kind, self.four_of_a_kind, self.full_house, self.sm_straight, self.lg_straight, self.yahzee, self.chance]
     
     def setName(self, name):
         self.name = name
 
     def takeScore(self, type, dice):
-        for i in self.base:
+        for i in self.scoreSheet:
             if i.type == type and not i.taken:
                 i.taken = True
                 i.calcScore(dice)
@@ -49,8 +49,8 @@ class Player:
     def showSS(self):
         print("Score sheet for " + self.name + ":")
         print("-----------------------------")
-        for i in self.base:
+        for i in self.scoreSheet:
             i.print()
-        Bonus.print(self.bonus, self.base[0:6])
+        Bonus.print(self.bonus, self.scoreSheet[0:6])
         print(Colors.BOLD + "| Total: " + str(self.score) + Colors.ENDC)
         print("-----------------------------")

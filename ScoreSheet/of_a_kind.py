@@ -15,7 +15,7 @@ class Of_a_kind(Basic):
                 if self.kind == 5:
                     self.score = 50
                 else:
-                    self.score = prevVal * self.kinds
+                    self.score = prevVal * self.kind
                 break
             if dice[d].value == prevVal:
                 self.count += 1
