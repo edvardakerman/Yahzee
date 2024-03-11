@@ -71,7 +71,7 @@ for i in range(len(players)):
 
 print("\nLet's play!")
 
-for t in range(15):
+for t in range(1):
     print("\nRound " + str(t+1) + " / 15")
     for player in players:
         print('\n' + player.name + ", it's your turn!")
@@ -91,6 +91,14 @@ HighScore.saveHighScore(players[0].score)
 
 for p in range(len(players)):
     print(str(p + 1) + ". " + players[p].name + ", your final score is: " + str(players[p].score))
-print("\nHighscore: " + str(HighScore.getHighScore()))
+    
+if (HighScore.getHighScore() < players[0].score):
+    print("\nYou set a new Highscore!!!" + str(HighScore.getHighScore()))
+    print("The old highscore was " + str(HighScore.getHighScore()) + ", the new highscore is " + str(players[0].score) + "!!")
+    print("Congratulations " + players[0].name + "!!")
+else:
+    print("\nYou did not set a new highscore. The highscore is still " + str(HighScore.getHighScore()) + ".")
+    print("Better luck next time!")
+
 
 
