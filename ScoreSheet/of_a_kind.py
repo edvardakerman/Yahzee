@@ -8,7 +8,6 @@ class Of_a_kind(Basic):
         super().__init__(type, name, color)
 
     def calcScore(self, dice):
-        self.taken = True
         dice = sorted(dice, key=lambda x: x.value, reverse=True)
         prevVal = dice[0].value
         for d in range(1, 5):

@@ -34,7 +34,6 @@ class Player:
     def setName(self, name):
         self.name = name
 
-
     def takeScore(self, type, dice):
         for i in self.base:
             if i.type == type and not i.taken:
@@ -52,6 +51,6 @@ class Player:
         print("-----------------------------")
         for i in self.base:
             i.print()
-        Bonus.print(self.bonus)
+        Bonus.print(self.bonus, self.base[0:6])
         print(Colors.BOLD + "| Total: " + str(self.score) + Colors.ENDC)
-        print("-----------------------------") 
+        print("-----------------------------")

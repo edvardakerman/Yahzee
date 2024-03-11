@@ -16,3 +16,14 @@ class Bonus(Basic):
         else:
             self.score = 0
         self.statusColor()
+    
+    def calcBaseScore(self, base):
+        baseScore = 0
+        for b in base:
+            baseScore += b.score
+        return baseScore
+    
+    def print(self, base):
+        baseScore = self.calcBaseScore(base)
+        print(self.status + "| " + str(self.type) + Basic.getSpaceInt(self.type) +" | " + self.name + " (" + str(baseScore) + ")" + Basic.getSpaceInt(baseScore) + "      | " + str(self.score) + Basic.getSpaceInt(self.score) + " |" + Colors.ENDC)
+        print("-----------------------------")

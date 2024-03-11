@@ -27,7 +27,6 @@ class Basic:
                 self.status = Colors.GREEN
 
     def calcScore(self, dice):
-        self.taken = True
         for d in dice:
             if d.value == self.type:
                 self.score += self.type
