@@ -1,12 +1,9 @@
 from ScoreSheet.basic import Basic
 from ScoreSheet.bonus import Bonus
 from ScoreSheet.chance import Chance
-from ScoreSheet.four_of_a_kind import Four_of_a_kind
 from ScoreSheet.full_house import Full_house
 from ScoreSheet.straight import Straight
-from ScoreSheet.three_of_a_kind import Three_of_a_kind
-from ScoreSheet.yahzee import Yahzee
-from ScoreSheet.pair import Pair
+from ScoreSheet.of_a_kind import Of_a_kind
 from ScoreSheet.two_pairs import Two_pair
 from colors import Colors
 
@@ -22,14 +19,14 @@ class Player:
         self.fours = Basic(4, "Fours", color)
         self.fives = Basic(5, "Fives", color)
         self.sixes = Basic(6, "Sixes", color)
-        self.pair = Pair(7, "Pair", color)
+        self.pair = Of_a_kind(7, "Pair", color, 2)
         self.two_pair = Two_pair(8, "Two pairs", color)
-        self.three_of_a_kind = Three_of_a_kind(9, "Three of a kind", color)
-        self.four_of_a_kind = Four_of_a_kind(10, "Four of a kind", color)
+        self.three_of_a_kind = Of_a_kind(9, "Three of a kind", color, 3)
+        self.four_of_a_kind = Of_a_kind(10, "Four of a kind", color, 4)
         self.full_house = Full_house(11, "Full house", color)
         self.sm_straight = Straight(12, "Small straight", color)
         self.lg_straight = Straight(13, "Large straight", color)
-        self.yahzee = Yahzee(14, "Yahzee", color)
+        self.yahzee = Of_a_kind(14, "YAHZEE", color, 5)
         self.chance = Chance(15, "Chance", color)
         self.bonus = Bonus(16, "Bonus", color)
         self.base = [self.ones, self.twos, self.threes, self.fours, self.fives, self.sixes, self.pair, self.two_pair, self.three_of_a_kind, self.four_of_a_kind, self.full_house, self.sm_straight, self.lg_straight, self.yahzee, self.chance]

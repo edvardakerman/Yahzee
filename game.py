@@ -71,7 +71,7 @@ for i in range(len(players)):
 
 print("\nLet's play!")
 
-for t in range(1):
+for t in range(15):
     print("\nRound " + str(t+1) + " / 15")
     for player in players:
         print('\n' + player.name + ", it's your turn!")
