@@ -25,3 +25,8 @@ two_pair = Two_pair(8, "Two pairs", Colors.CYAN)
 two_pair.calcScore(dice)
 
 print("Two Pair: " + str(two_pair.score))
+
+highScore = {"Name": str, "Score": int}
+highScore["Name"] = "Test"
+
+print(highScore["Name"])

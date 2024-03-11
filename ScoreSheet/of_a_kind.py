@@ -11,8 +11,11 @@ class Of_a_kind(Basic):
         dice = sorted(dice, key=lambda x: x.value, reverse=True)
         prevVal = dice[0].value
         for d in range(1, 5):
-            if self.count == (self.kind -1) or (self.count == (self.kind -2) and dice[d].value == prevVal):
-                self.score = prevVal * self.kind
+            if self.count == (self.kind -1) or (self.count == (self.kind -2) and dice[d].value == prevVal):   
+                if self.kind == 5:
+                    self.score = 50
+                else:
+                    self.score = prevVal * self.kinds
                 break
             if dice[d].value == prevVal:
                 self.count += 1

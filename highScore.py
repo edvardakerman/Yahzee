@@ -1,25 +1,27 @@
 class HighScore:
-    fileName = "highscore.txt"
+    
+    def __init__(self):
+        self.fileName = "highscore.txt"
+        self.score = int
+        self.name = ""
+        self.getHighScore()
 
-    def saveHighScore(newScore):
-        if (newScore > HighScore.getHighScore()):
-            f = open(HighScore.fileName, "w")
-            f.write(str(newScore))
+    def saveHighScore(self, newScore, newName):
+        if (int(newScore) > int(self.score)):
+            f = open(self.fileName, "w")
+            f.write(newName + ", " + str(newScore))
             f.close
-        
-        
-    def getHighScore():
-        highScore = int
+    
+    def getHighScore(self):
         try:
-            f = open(HighScore.fileName, "r")
-            highScore = f.readline()
+            f = open(self.fileName, "r")
+            info = f.readline().split(", ")
+            self.name = info[0]
+            self.score = info[1]
             f.close()
-            try:
-                return int(highScore)
-            except ValueError:
-                return 0
-        except FileNotFoundError:
-            return 0
+        except FileNotFoundError or ValueError:
+            self.score = 0
+            self.name = ""
 
 
 

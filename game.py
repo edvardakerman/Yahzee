@@ -19,6 +19,9 @@ playerThree = Player("three", Colors.YELLOW)
 playerFour = Player("four", Colors.BLUE)
 players = [playerOne, playerTwo, playerThree, playerFour]
 
+## Highscore
+highScore = HighScore()
+
 ## Turns
 turns = 0
 
@@ -59,8 +62,8 @@ def score_Choice(player):
 
 ## Game
 print(Colors.HEADER + "\nWelcome to Yahtzee!" + " Try to set a new highscore!!" + Colors.ENDC)
-if (HighScore.getHighScore() > 0):
-    print("The current highscore is " + str(HighScore.getHighScore()))
+if (int(highScore.score) > 0):
+    print("The current highscore holder is " + highScore.name + " with a score of " + str(highScore.score))
 print("\nHow many players are there? (1-4)")
 numPlayers = InputHandling.getInt(1, 4)
 players = players[:numPlayers]
@@ -87,18 +90,18 @@ for t in range(15):
 print("\nGame over!")
 players.sort(key=lambda x: x.score, reverse=False)
 print(Colors.BOLD + "The winner is... " + players[0].name + "!!\n" + Colors.ENDC)
-HighScore.saveHighScore(players[0].score)
+highScore.saveHighScore(players[0].score, players[0].name)
 
 for p in range(len(players)):
     print(str(p + 1) + ". " + players[p].name + ", your final score is: " + str(players[p].score))
     
-if (HighScore.getHighScore() < players[0].score):
-    print("\nYou set a new Highscore!!!" + str(HighScore.getHighScore()))
-    print("The old highscore was " + str(HighScore.getHighScore()) + ", the new highscore is " + str(players[0].score) + "!!")
-    print("Congratulations " + players[0].name + "!!")
+if (int(highScore.score) < players[0].score):
+    print("\nCongratulations " + players[0].name + ", you set a new Highscore!!!")
+    print("The old highscore was " + str(highScore.score) + " by " + highScore.name + ", the new highscore is " + str(players[0].score) + "!!\n")
 else:
-    print("\nYou did not set a new highscore. The highscore is still " + str(HighScore.getHighScore()) + ".")
-    print("Better luck next time!")
+    print("\nYou did not set a new highscore. The highscore holder is still " + highScore.name + " , with a score of " + str(highScore.score))
+    print("Better luck next time!\n")
 
 
 
+ 
