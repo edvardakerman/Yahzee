@@ -74,7 +74,7 @@ for i in range(len(players)):
 
 print("\nLet's play!")
 
-for t in range(15):
+for t in range(1):
     print("\nRound " + str(t+1) + " / 15")
     for player in players:
         print('\n' + player.name + ", it's your turn!")
@@ -88,7 +88,7 @@ for t in range(15):
     
 
 print("\nGame over!")
-players.sort(key=lambda x: x.score, reverse=False)
+players.sort(key=lambda x: x.score, reverse=True)
 print(Colors.BOLD + "The winner is... " + players[0].name + "!!\n" + Colors.ENDC)
 highScore.saveHighScore(players[0].score, players[0].name)
 
